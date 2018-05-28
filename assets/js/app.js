@@ -36,9 +36,15 @@ function drawEverithing(){
     /* Then we draw our paddle */
     drawElement(1, 250, 15, 100, 'white');
     /* Finally we draw our ball */
-    drawElement(ballX, 200, 10, 10, 'lime');
+    drawCircle(ballX, 100, 10, 'lime')
 }
 
+function drawCircle(centerX, centerY, radius, fillColor){
+    canvasContext.fillStyle = fillColor;
+    canvasContext.beginPath();
+    canvasContext.arc(centerX, centerY, radius, 0, Math.PI*2, true);
+    canvasContext.fill();
+}
 function drawElement(topX, topY, canvasWidth, canvasHeight, fillColor){
     canvasContext.fillStyle = fillColor;
     canvasContext.fillRect(topX, topY, canvasWidth, canvasHeight);
