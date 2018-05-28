@@ -2,6 +2,7 @@
 let canvas,
 canvasContext,
 ballX = 50,
+ballSpeedX = 10,
 framesPerSecond = 30,
 ballSpeed = 1000/framesPerSecond;
 /* 
@@ -20,24 +21,25 @@ window.onload = function(){
 }
 
 function moveEverithing(){
-    ballX = ballX + 10;
-    if(ballX === 800){
-        ballX = 0;
-        ballSpeed = ballSpeed + 10;
-    }
-    console.log(ballX);
-    console.log(ballSpeed);
+    ballX = ballX + ballSpeedX;
+    if(ballX<0){
+        ballSpeedX = -ballSpeedX;
+    };
+    if(ballX > canvas.width){
+        ballSpeedX = -ballSpeedX;
+    };
 }
 
 function drawEverithing(){   
     /* First we draw our background*/
-    canvasContext.fillStyle = 'black';
-    canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+    drawElement(0, 0, canvas.width, canvas.height, 'black');
     /* Then we draw our paddle */
-    canvasContext.fillStyle = 'white';
-    canvasContext.fillRect(1, 250, 15, 100);
+    drawElement(1, 250, 15, 100, 'white');
     /* Finally we draw our ball */
-    canvasContext.fillStyle = 'lime';
-    canvasContext.fillRect(ballX, 200, 10, 10);
+    drawElement(ballX, 200, 10, 10, 'lime');
 }
 
+function drawElement(topX, topY, canvasWidth, canvasHeight, fillColor){
+    canvasContext.fillStyle = fillColor;
+    canvasContext.fillRect(topX, topY, canvasWidth, canvasHeight);
+}
