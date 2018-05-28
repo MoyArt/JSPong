@@ -36,7 +36,7 @@ function drawEverithing(){
     /* Then we draw our paddle */
     drawElement(1, 250, 15, 100, 'white');
     /* Finally we draw our ball */
-    drawCircle(ballX, 100, 10, 'lime')
+    drawCircle(ballX, 100, 10, 'lime');
 }
 
 function drawCircle(centerX, centerY, radius, fillColor){
