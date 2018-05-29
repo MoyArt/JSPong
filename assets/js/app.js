@@ -26,7 +26,7 @@ window.onload = function(){
     }, ballSpeed);
     canvas.addEventListener('mousemove', (e)=>{
         let mousePos = calculateMousePosition(e);
-        p1PaddleY = mousePos.y;
+        p1PaddleY = mousePos.y - (p1PaddleHeight/2);
     });
     
 }
