@@ -23,8 +23,23 @@ window.onload = function(){
     setInterval(function(){
         moveEverithing();
         drawEverithing();
-    }, ballSpeed)
+    }, ballSpeed);
+    canvas.addEventListener('mousemove', (e)=>{
+        let mousePos = calculateMousePosition(e);
+        p1PaddleY = mousePos.y;
+    });
     
+}
+
+function calculateMousePosition(e){
+    let rect = canvas.getBoundingClientRect(),
+        root = document.documentElement,
+        mouseX = e.clientX - rect.left - root.scrollLeft,
+        mouseY = e.clientY - rect.top - root.scrollTop;
+        return {
+            x: mouseX,
+            y: mouseY 
+        }
 }
 
 /*
