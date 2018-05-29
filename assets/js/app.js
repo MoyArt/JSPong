@@ -5,7 +5,9 @@
 let canvas,
 canvasContext,
 ballX = 50,
+ballY = 50,
 ballSpeedX = 10,
+ballSpeedY = 5,
 framesPerSecond = 30,
 ballSpeed = 1000/framesPerSecond;
 
@@ -28,12 +30,19 @@ window.onload = function(){
 */
 function moveEverithing(){
     ballX = ballX + ballSpeedX;
+    ballY = ballY + ballSpeedY;
     if(ballX<0){
         ballSpeedX = -ballSpeedX;
+    };
+    if(ballY<0){
+        ballSpeedY = -ballSpeedY;
     };
     if(ballX > canvas.width){
         ballSpeedX = -ballSpeedX;
     };
+    if(ballY > canvas.height){
+        ballSpeedY = -ballSpeedY;
+    }
 }
 
 /*
@@ -45,7 +54,7 @@ function drawEverithing(){
     /* Then we draw our paddle */
     drawElement(1, 250, 15, 100, 'white');
     /* Finally we draw our ball */
-    drawCircle(ballX, 100, 10, 'lime');
+    drawCircle(ballX, ballY, 10, 'lime');
 }
 
 /*
