@@ -32,13 +32,17 @@ window.onload = function(){
     });
     
 }
-
+/*
+    This function resets the ball and changes the ball trajectory
+*/
 function ballReset(){
     ballX = canvas.width/2;
     ballY = canvas.height/2;
     ballSpeedX = -ballSpeedX;
 }
-
+/* 
+    This function calculates the mouse position 
+*/
 function calculateMousePosition(e){
     let rect = canvas.getBoundingClientRect(),
         root = document.documentElement,
@@ -49,11 +53,21 @@ function calculateMousePosition(e){
             y: mouseY 
         }
 }
-
+/*
+    Computer AI Paddle Function
+*/
+function computerMovement(){
+    if(p2PaddleY < ballY){
+        p2PaddleY = p2PaddleY + 6;
+    }else{
+        p2PaddleY = p2PaddleY - 6;
+    }
+}
 /*
     This function hel us to move everything on the canvas
 */
 function moveEverithing(){
+    computerMovement()
     ballX = ballX + ballSpeedX;
     ballY = ballY + ballSpeedY;
     if(ballX<0){
