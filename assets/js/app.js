@@ -57,10 +57,12 @@ function calculateMousePosition(e){
     Computer AI Paddle Function
 */
 function computerMovement(){
-    if(p2PaddleY < ballY){
-        p2PaddleY = p2PaddleY + 6;
-    }else{
-        p2PaddleY = p2PaddleY - 6;
+    //We calculate the center of the paddle
+    let paddle2Center = p2PaddleY + (p1PaddleHeight/2);
+    if(paddle2Center < ballY - 35){
+        p2PaddleY += 6;
+    }else if(paddle2Center > ballY + 35){
+        p2PaddleY -= 6;
     }
 }
 /*
@@ -68,8 +70,8 @@ function computerMovement(){
 */
 function moveEverithing(){
     computerMovement()
-    ballX = ballX + ballSpeedX;
-    ballY = ballY + ballSpeedY;
+    ballX += ballSpeedX;
+    ballY += ballSpeedY;
     if(ballX<0){
         //ballSpeedX = -ballSpeedX;
         if(ballY>p1PaddleY && ballY<p1PaddleY + p1PaddleHeight){
@@ -105,6 +107,7 @@ function drawEverithing(){
     drawElement(0, p1PaddleY, paddleThickness, p1PaddleHeight, 'white');
     /* Then we draw our Player 2 paddle */
     drawElement((canvas.width - paddleThickness), p2PaddleY, paddleThickness, p1PaddleHeight, 'white');
+    canvasContext.fillText('Hi-Score Stuff: ', 100, 100);
 }
 
 /*
