@@ -10,7 +10,9 @@ ballSpeedX = 10,
 ballSpeedY = 5,
 framesPerSecond = 30,
 p1PaddleY = 250,
+p2PaddleY = 250,
 p1PaddleHeight = 100,
+paddleThickness = 15,
 ballSpeed = 1000/framesPerSecond;
 
 /* 
@@ -34,6 +36,7 @@ window.onload = function(){
 function ballReset(){
     ballX = canvas.width/2;
     ballY = canvas.height/2;
+    ballSpeedX = -ballSpeedX;
 }
 
 function calculateMousePosition(e){
@@ -65,7 +68,11 @@ function moveEverithing(){
         ballSpeedY = -ballSpeedY;
     };
     if(ballX > canvas.width){
-        ballSpeedX = -ballSpeedX;
+        if(ballY>p2PaddleY && ballY<p2PaddleY + p1PaddleHeight){
+            ballSpeedX = -ballSpeedX;
+        }else{
+            ballReset();
+        }
     };
     if(ballY > canvas.height){
         ballSpeedY = -ballSpeedY;
@@ -78,10 +85,12 @@ function moveEverithing(){
 function drawEverithing(){   
     /* First we draw our background*/
     drawElement(0, 0, canvas.width, canvas.height, 'black');
-    /* Finally we draw our ball */
+    /* Then we draw our ball */
     drawCircle(ballX, ballY, 10, 'lime');
-    /* Then we draw our paddle */
-    drawElement(1, p1PaddleY, 15, p1PaddleHeight, 'white');
+    /* Then we draw our Player 1 paddle */
+    drawElement(0, p1PaddleY, paddleThickness, p1PaddleHeight, 'white');
+    /* Then we draw our Player 2 paddle */
+    drawElement((canvas.width - paddleThickness), p2PaddleY, paddleThickness, p1PaddleHeight, 'white');
 }
 
 /*
