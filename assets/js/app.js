@@ -9,6 +9,8 @@ ballY = 50,
 ballSpeedX = 10,
 ballSpeedY = 5,
 framesPerSecond = 30,
+p1PaddleY = 250,
+p1PaddleHeight = 100,
 ballSpeed = 1000/framesPerSecond;
 
 /* 
@@ -52,7 +54,7 @@ function drawEverithing(){
     /* First we draw our background*/
     drawElement(0, 0, canvas.width, canvas.height, 'black');
     /* Then we draw our paddle */
-    drawElement(1, 250, 15, 100, 'white');
+    drawElement(1, p1PaddleY, 15, p1PaddleHeight, 'white');
     /* Finally we draw our ball */
     drawCircle(ballX, ballY, 10, 'lime');
 }
