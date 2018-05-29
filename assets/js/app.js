@@ -31,6 +31,11 @@ window.onload = function(){
     
 }
 
+function ballReset(){
+    ballX = canvas.width/2;
+    ballY = canvas.height/2;
+}
+
 function calculateMousePosition(e){
     let rect = canvas.getBoundingClientRect(),
         root = document.documentElement,
@@ -49,7 +54,12 @@ function moveEverithing(){
     ballX = ballX + ballSpeedX;
     ballY = ballY + ballSpeedY;
     if(ballX<0){
-        ballSpeedX = -ballSpeedX;
+        //ballSpeedX = -ballSpeedX;
+        if(ballY>p1PaddleY && ballY<p1PaddleY + p1PaddleHeight){
+            ballSpeedX = -ballSpeedX;
+        }else{
+            ballReset();
+        }
     };
     if(ballY<0){
         ballSpeedY = -ballSpeedY;
@@ -68,10 +78,10 @@ function moveEverithing(){
 function drawEverithing(){   
     /* First we draw our background*/
     drawElement(0, 0, canvas.width, canvas.height, 'black');
-    /* Then we draw our paddle */
-    drawElement(1, p1PaddleY, 15, p1PaddleHeight, 'white');
     /* Finally we draw our ball */
     drawCircle(ballX, ballY, 10, 'lime');
+    /* Then we draw our paddle */
+    drawElement(1, p1PaddleY, 15, p1PaddleHeight, 'white');
 }
 
 /*
