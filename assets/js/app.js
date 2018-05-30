@@ -12,6 +12,8 @@ framesPerSecond = 30,
 p1PaddleY = 250,
 p2PaddleY = 250,
 p1PaddleHeight = 100,
+player1Score = 0,
+player2Score = 0,
 paddleThickness = 15,
 ballSpeed = 1000/framesPerSecond;
 
@@ -76,8 +78,11 @@ function moveEverithing(){
         //ballSpeedX = -ballSpeedX;
         if(ballY>p1PaddleY && ballY<p1PaddleY + p1PaddleHeight){
             ballSpeedX = -ballSpeedX;
+            let deltaY = ballY - (p1PaddleY + p1PaddleHeight/2);
+            ballSpeedY = deltaY * 0.35;
         }else{
             ballReset();
+            player2Score +=1;
         }
     };
     if(ballY<0){
@@ -86,8 +91,10 @@ function moveEverithing(){
     if(ballX > canvas.width){
         if(ballY>p2PaddleY && ballY<p2PaddleY + p1PaddleHeight){
             ballSpeedX = -ballSpeedX;
+
         }else{
             ballReset();
+            player1Score +=1;
         }
     };
     if(ballY > canvas.height){
@@ -107,7 +114,8 @@ function drawEverithing(){
     drawElement(0, p1PaddleY, paddleThickness, p1PaddleHeight, 'white');
     /* Then we draw our Player 2 paddle */
     drawElement((canvas.width - paddleThickness), p2PaddleY, paddleThickness, p1PaddleHeight, 'white');
-    canvasContext.fillText('Hi-Score Stuff: ', 100, 100);
+    canvasContext.fillText(player1Score, 100, 100);
+    canvasContext.fillText(player2Score, canvas.width - 100, 100);
 }
 
 /*
