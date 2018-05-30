@@ -91,7 +91,8 @@ function moveEverithing(){
     if(ballX > canvas.width){
         if(ballY>p2PaddleY && ballY<p2PaddleY + p1PaddleHeight){
             ballSpeedX = -ballSpeedX;
-
+            let deltaY = ballY - (p2PaddleY + p1PaddleHeight/2);
+            ballSpeedY = deltaY * 0.35;
         }else{
             ballReset();
             player1Score +=1;
