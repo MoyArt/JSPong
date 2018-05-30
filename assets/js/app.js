@@ -14,6 +14,7 @@ p2PaddleY = 250,
 p1PaddleHeight = 100,
 player1Score = 0,
 player2Score = 0,
+winningCondition = 5,
 paddleThickness = 15,
 ballSpeed = 1000/framesPerSecond;
 
@@ -81,8 +82,9 @@ function moveEverithing(){
             let deltaY = ballY - (p1PaddleY + p1PaddleHeight/2);
             ballSpeedY = deltaY * 0.35;
         }else{
+            player2Score +=1; // must be before ball reset
             ballReset();
-            player2Score +=1;
+            
         }
     };
     if(ballY<0){
@@ -94,8 +96,9 @@ function moveEverithing(){
             let deltaY = ballY - (p2PaddleY + p1PaddleHeight/2);
             ballSpeedY = deltaY * 0.35;
         }else{
+            player1Score +=1;// must be before ball reset
             ballReset();
-            player1Score +=1;
+            
         }
     };
     if(ballY > canvas.height){
