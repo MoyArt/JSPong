@@ -14,7 +14,7 @@ p2PaddleY = 250,
 p1PaddleHeight = 100,
 player1Score = 0,
 player2Score = 0,
-winningCondition = 5,
+winningCondition = 3,
 paddleThickness = 15,
 ballSpeed = 1000/framesPerSecond;
 
