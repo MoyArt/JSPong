@@ -1,7 +1,4 @@
 // Global Variables
-/* 
-    We use canvas to all concerns about screen size. & we use Canvas Context to all graphical information.
-*/
 let canvas,
 canvasContext,
 ballX = 50,
@@ -18,12 +15,14 @@ winningCondition = 3,
 showWinScreen = false,
 paddleThickness = 15,
 ballSpeed = 1000/framesPerSecond;
-
 /* 
     our onload function.
 */
 window.onload = function(){
     console.log('Window finished loading, App scripts loaded');
+    /*
+        We use canvas to all concerns about screen size. & we use Canvas Context to all graphical information.
+    */
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
     setInterval(function(){
@@ -126,14 +125,6 @@ function moveEverithing(){
     }
 }
 /*
-    A function to draw the net
-*/
-function drawNet(){
-    for(let i=0; i<canvas.height; i+=60){
-        drawElement(canvas.width/2-1, i, 2, 20, 'white');
-    }
-}
-/*
     This function draws all the elements on the canvas
 */
 function drawEverithing(){  
@@ -162,6 +153,19 @@ function drawEverithing(){
     drawElement((canvas.width - paddleThickness), p2PaddleY, paddleThickness, p1PaddleHeight, 'white');
     canvasContext.fillText(player1Score, 100, 100);
     canvasContext.fillText(player2Score, canvas.width - 100, 100);
+}
+/*
+-----------------------------------------------------------
+    DRAWING ELEMENTS FUNCTION
+-----------------------------------------------------------
+*/
+/*
+    This function help us to draw the net
+*/
+function drawNet(){
+    for(let i=0; i<canvas.height; i+=60){
+        drawElement(canvas.width/2-1, i, 2, 20, 'white');
+    }
 }
 /*
     This function help us to create new round elements to my canvas
