@@ -126,6 +126,14 @@ function moveEverithing(){
     }
 }
 /*
+    A function to draw the net
+*/
+function drawNet(){
+    for(let i=0; i<canvas.height; i+=60){
+        drawElement(canvas.width/2-1, i, 2, 20, 'white');
+    }
+}
+/*
     This function draws all the elements on the canvas
 */
 function drawEverithing(){  
@@ -144,6 +152,8 @@ function drawEverithing(){
         canvasContext.fillText('Game Over, click to start', 350, 500);
         return;
     } 
+    /* We draw the net */
+    drawNet();
     /* Then we draw our ball */
     drawCircle(ballX, ballY, 10, 'lime');
     /* Then we draw our Player 1 paddle */
