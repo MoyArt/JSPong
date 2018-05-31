@@ -30,19 +30,31 @@ window.onload = function(){
         moveEverithing();
         drawEverithing();
     }, ballSpeed);
+    /*
+        Event Handlers
+    */
+    canvas.addEventListener('mousedown', handleMouseClick);
     canvas.addEventListener('mousemove', (e)=>{
         let mousePos = calculateMousePosition(e);
         p1PaddleY = mousePos.y - (p1PaddleHeight/2);
     });
     
 }
+/* 
+    This function handles mouse click on win screen 
+*/
+function handleMouseClick(e){
+    if(showWinScreen){
+        player1Score = 0;
+        player2Score = 0;
+        showWinScreen = false;
+    }
+}
 /*
     This function resets the ball and changes the ball trajectory
 */
 function ballReset(){
     if(player1Score >= winningCondition || player2Score >= winningCondition){
-        player1Score = 0;
-        player2Score = 0;
         showWinScreen = true;
     };
     ballX = canvas.width/2;
@@ -119,10 +131,17 @@ function moveEverithing(){
 function drawEverithing(){  
     /* First we draw our background*/
     drawElement(0, 0, canvas.width, canvas.height, 'black');
-    /* now we check if  */
+    /* now we check if show win screen is on */
     if(showWinScreen){
         canvasContext.fillStyle = 'fuchsia';
-        canvasContext.fillText('Game Over, click to start', 100, 100);
+        /* If player 1 won, we show his winning text, else if player 2 won, we show his text*/
+        if(player1Score >= winningCondition){
+            canvasContext.fillText('Player One RULES!', 350, 200);
+        } else if(player2Score >= winningCondition){
+            canvasContext.fillText('Player Two Won', 350, 200);
+        }
+        /*We show the game over Text */
+        canvasContext.fillText('Game Over, click to start', 350, 500);
         return;
     } 
     /* Then we draw our ball */
