@@ -39,6 +39,10 @@ window.onload = function(){
     This function resets the ball and changes the ball trajectory
 */
 function ballReset(){
+    if(player1Score >= winningCondition || player2Score >= winningCondition){
+        player1Score = 0;
+        player2Score = 0;
+    };
     ballX = canvas.width/2;
     ballY = canvas.height/2;
     ballSpeedX = -ballSpeedX;
@@ -84,7 +88,6 @@ function moveEverithing(){
         }else{
             player2Score +=1; // must be before ball reset
             ballReset();
-            
         }
     };
     if(ballY<0){
@@ -98,7 +101,6 @@ function moveEverithing(){
         }else{
             player1Score +=1;// must be before ball reset
             ballReset();
-            
         }
     };
     if(ballY > canvas.height){
