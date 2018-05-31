@@ -15,6 +15,7 @@ p1PaddleHeight = 100,
 player1Score = 0,
 player2Score = 0,
 winningCondition = 3,
+showWinScreen = false,
 paddleThickness = 15,
 ballSpeed = 1000/framesPerSecond;
 
@@ -42,6 +43,7 @@ function ballReset(){
     if(player1Score >= winningCondition || player2Score >= winningCondition){
         player1Score = 0;
         player2Score = 0;
+        showWinScreen = true;
     };
     ballX = canvas.width/2;
     ballY = canvas.height/2;
@@ -76,6 +78,10 @@ function computerMovement(){
     This function hel us to move everything on the canvas
 */
 function moveEverithing(){
+    //First we check if win screen is true, if its true nothing moves
+    if(showWinScreen){
+        return
+    };
     computerMovement()
     ballX += ballSpeedX;
     ballY += ballSpeedY;
@@ -107,13 +113,18 @@ function moveEverithing(){
         ballSpeedY = -ballSpeedY;
     }
 }
-
 /*
     This function draws all the elements on the canvas
 */
-function drawEverithing(){   
+function drawEverithing(){  
     /* First we draw our background*/
     drawElement(0, 0, canvas.width, canvas.height, 'black');
+    /* now we check if  */
+    if(showWinScreen){
+        canvasContext.fillStyle = 'fuchsia';
+        canvasContext.fillText('Game Over, click to start', 100, 100);
+        return;
+    } 
     /* Then we draw our ball */
     drawCircle(ballX, ballY, 10, 'lime');
     /* Then we draw our Player 1 paddle */
@@ -123,7 +134,6 @@ function drawEverithing(){
     canvasContext.fillText(player1Score, 100, 100);
     canvasContext.fillText(player2Score, canvas.width - 100, 100);
 }
-
 /*
     This function help us to create new round elements to my canvas
 */
@@ -133,7 +143,6 @@ function drawCircle(centerX, centerY, radius, fillColor){
     canvasContext.arc(centerX, centerY, radius, 0, Math.PI*2, true);
     canvasContext.fill();
 }
-
 /*
     This function help us to create new box elements to my canvas
 */
