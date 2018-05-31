@@ -144,7 +144,7 @@ function drawEverithing(){
         return;
     } 
     /* We draw the net */
-    drawNet();
+    drawNet(40);
     /* Then we draw our ball */
     drawCircle(ballX, ballY, 10, 'lime');
     /* Then we draw our Player 1 paddle */
@@ -162,9 +162,9 @@ function drawEverithing(){
 /*
     This function help us to draw the net
 */
-function drawNet(){
-    for(let i=0; i<canvas.height; i+=60){
-        drawElement(canvas.width/2-1, i, 2, 20, 'white');
+function drawNet(lineHeight){
+    for(let i=0; i<canvas.height; i+=lineHeight){
+        drawElement(canvas.width/2-1, i+10, 2, 20, 'white');
     }
 }
 /*
