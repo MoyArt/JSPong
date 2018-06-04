@@ -11,6 +11,7 @@ p2PaddleY = 250,
 p1PaddleHeight = 100,
 player1Score = 0,
 player2Score = 0,
+scoreBoard = {},
 winningCondition = 3,
 showWinScreen = false,
 paddleThickness = 15,
@@ -183,3 +184,11 @@ function drawElement(topX, topY, canvasWidth, canvasHeight, fillColor){
     canvasContext.fillStyle = fillColor;
     canvasContext.fillRect(topX, topY, canvasWidth, canvasHeight);
 }
+
+/*
+-----------------------------------------------------------
+    HI SCORE OBJECT
+-----------------------------------------------------------
+*/
+
+
