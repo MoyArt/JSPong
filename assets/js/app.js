@@ -184,11 +184,17 @@ function drawElement(topX, topY, canvasWidth, canvasHeight, fillColor){
     canvasContext.fillStyle = fillColor;
     canvasContext.fillRect(topX, topY, canvasWidth, canvasHeight);
 }
-
 /*
 -----------------------------------------------------------
     HI SCORE OBJECT
 -----------------------------------------------------------
 */
 
+function scoreBoard(boardName){
+    this.boardName = boardName;
+    this.highScore = [100, 200, 300, 400, 500, 600, 700, 800, 900, 910];
+    this.isHighScore = function(){
+        console.log('This is my High Score Method')
+    }
+}
 
